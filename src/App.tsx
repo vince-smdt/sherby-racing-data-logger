@@ -1,24 +1,24 @@
+import { useEffect, useState } from 'react';
+import './App.css';
 import 'chart.js/auto';
+import { parseCsvToChartData } from './parseCsv';
+import { Data } from './data';
+import { testData } from './testData';
 import { Line } from 'react-chartjs-2';
-import "./App.css";
 
 function App() {
+  let [data, setData] = useState<Data>({ labels: [], datasets: [] });
+
+  useEffect(() => {
+    console.log("App has loaded.");
+    const newData = parseCsvToChartData(testData);
+    if (newData) setData(newData);
+  }, []);
+
   return <>
     <Line
       datasetIdKey='id'
-      data={{
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        datasets: [
-          {
-            label: 'Test1',
-            data: [0, 4, 3, 1, 5, 7, 8],
-          },
-          {
-            label: 'Test2',
-            data: [2, 1, 4, 5, 5, 3, 7],
-          },
-        ]
-      }}
+      data={data}
     />
   </>;
 }

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import 'chart.js/auto';
-import { parseCsvToChartData } from './parseCsv';
-import { Data } from './data';
-import { testData } from './testData';
+import { parseCsvToChartData } from './ParseCsv';
+import { Data } from './Data';
+import { testData } from './TestData';
 import { Line } from 'react-chartjs-2';
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
 
   return <>
     <Line
+      id='main-chart'
       datasetIdKey='id'
       data={data}
     />

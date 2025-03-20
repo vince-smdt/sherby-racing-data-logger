@@ -2,3 +2,9 @@
   margin: 0;
   padding: 0;
 }
+
+#main-chart {
+  max-height: 90vh;
+  height: auto !important;
+  width: 100% !important;
+}

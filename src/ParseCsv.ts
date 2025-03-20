@@ -1,4 +1,4 @@
-import { Data, Dataset } from "./data";
+import { Data, Dataset } from "./Data";
 
 export function parseCsvToChartData(content: string): Data | null {
   const lines = content.split(/\r?\n/);
@@ -7,11 +7,12 @@ export function parseCsvToChartData(content: string): Data | null {
   const datasets = new Array<Dataset>;
 
   // Initiate value arrays in data dictionary
-  for (let hi = 1; hi < headers.length; hi++)
+  for (let hi = 1; hi < headers.length; hi++) {
     datasets.push({
       label: headers[hi],
       data: new Array<number>()
     });
+  }
 
   // Read csv content into arrays
   for (let li = 1; li < lines.length; li++) {
